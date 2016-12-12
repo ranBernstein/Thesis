@@ -1,0 +1,58 @@
+
+
+\chapter{Introduction}
+\label{chap:intro}
+
+\section{Laban Movement Analysis using Machine Learning}
+Recent years there has been a surge of interest in automated analysis of
+human motor behavior in the fields of robotics, computer science and animation.
+Computerized recognition of movement characteristics has many potential
+applications: It could be used for detection of personality traits that are
+associated with specific motor tendencies \cite{levy2003use} during, for
+example, a job interview, and for early detection and/or for severity assessment
+of various illnesses characterized by abnormal motor behavior, such as autism
+\cite{dott1995aesthetic} , schizophrenia or Parkinson's disease. Automated
+emotion recognition from movement, based on associations between certain
+emotions and specific motor behaviors \cite{aristidou2015emotion} is another
+important application, which may have a variety of uses such as online feedback
+to presenters to help them convey through their body-language the emotional
+message they want to communicate (e.g., politicians and public speakers or
+dancers and actors in training), or recognition of people's emotions during
+interactive games such as those played using the Xbox. Automated analysis of
+motor behavior can be used also to assess the progression and improvement of
+participants in a variety of training programs that employ virtual reality
+environment \cite{aristidou2013motion};  it can be used for motion retrieval
+from large motion database \cite{kapadia2013efficient} and for movement indexing
+and classification \cite{aristidou2013motion} in the field of animation. Lastly,
+machine learning of a person's movement patterns has enormous potential for
+future, from security identification, to interactive environments. Most of the
+studies dealing with automatic analysis of human movement captured 
+movement using complex and expensive 3D motion capture systems. However, in
+order to implement the many potential uses mentioned above in our everyday life,
+we should be able to do such automated analysis using a small, inexpensive
+(affordable) and easy to use 3D camera. One such camera that has been
+successfully used in interactive games is the Kinect camera. Thus, in this study
+we aimed to develop an automated method for recognizing the motor
+characteristics of any human movement captured by a Kinect camera. Once the
+movement is captured in 3D, its assessment and analysis can be done in various
+ways. In this study we chose to develop the computerized recognition of movement
+characteristics based on Laban Movement Analysis (LMA).
+
+
+
+\section{Linear Discriminant Analysis}
+\label{LDAIntro}
+In the second chapter of this thesis, we address the problem of mining data streams when the data 
+is \textit{distributed} over a large number of nodes with the same data generation process at every node. However, the streaming data is not stationary; notably, it can change over time. Classic examples of real-life prediction problems that involve this kind of change are user preference prediction and fraud detection. In the former, the choices of the user can change over time; in the latter, the fraudulent transactions change constantly to avoid detection. In both, the change can render the prediction model invalid.
+In such a setting --- where the model must be updated to stay valid and communication is costly --- the question is \textit{when} to recompute the model. The naive solution for this problem is recomputing the model periodically. The problem with this solution is that it involves needless work if the model changes infrequently, yet may introduce unacceptable errors between scheduled updates. 
+In contrast to periodical computation, we focus on \textit{monitoring} the quality of a given model, and recomputing it only as needed. 
+\par We focus on linear binary classifiers, using LDA \cite{fisher1936use} as the learning algorithm. This choice is due the popularity of linear classifiers in real applications and that they serve as a platform for more complex classifiers, such as ensemble model in the work of ~\cite{Deva, eSVM}, neural networks in the work of ~\cite{osadchy2015k}, 
+and even deep architectures in the work of \cite{ROSS}. Our method is distinct from the previous work in the following two aspects:
+
+\noindent \textbf{Model-Based Monitoring:} 
+Monitoring the model and not the misclassifications has an important benefit: the need for synchronization can be detected before the misclassifications occurs. In contrast to most previous work on monitoring a classifier (that utilizes misclassification rates to draw conclusions about the change in the distribution ~\cite{baena2006early, gama2004learning, nishida2007detecting}), we propose to monitor the change in the \textit{model} itself.
+
+\noindent \textbf{Distributed Setting:} Monitoring a classifier has been actively studied in centralized settings. In contrast to these studies, our is one of the very few works that monitor in a distributed setting. In such setting, data is distributed over a large number of nodes and the model is learned globally after synchronization. While the few existing methods for classifier monitoring in distributed settings rely on heuristics (~\cite{AngGZPH13}), our approach is the only one that provides a provable guarantees of correctness.
+
+\thesisbibfiles{bib}
+\thesisbibstyle{alpha}

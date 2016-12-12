@@ -1,0 +1,29 @@
+
+\chapter{Conclusion}
+\label{chap:conclusion}
+In the first chapter we succeeded with a relatively high success rate to
+capture the essence, and develop automatic recognition of 18 LMA motor elements,
+using an inexpensive and widely available sensor. We hope that our work will
+provide the foundation and inspiration for developing an in-home, inexpensive
+LMA based feedback system that will be used for multiple purposes, such as
+therapy, arts, video games, communication and human-robot interaction.
+
+In the second chapter we introduced the first communication-efficient monitoring algorithm for a linear classifier model that monitors the
+models itself, but does not require knowledge of the global model at the local nodes.
+As long as all nodes meet their local condition, the
+global model is guaranteed to be valid. Our algorithm has important benefits:
+\begin{itemize}
+  \item Our method works with distributed data in a communication efficient way.
+  \item Monitoring the model as opposed to monitoring the misclassifications
+  allows for early detection of the changing even before misclassification
+  occurs.
+\end{itemize}
+
+We evaluated the theoretical scheme -- DLDA, and its probabilistic version -- PDLDA, on three real data sets.
+For a small number of nodes we used DLDA with its theoretical guarantee, and for a greater number of nodes we used
+PDLDA. We showed that the proposed scheme outperforms PER: it maintains a smaller Euclidean distance between
+the last computed model and the current true model with a lower volume of communication.
+This work is the first step in designing communication-efficient algorithms
+with theoretical guarantees for monitoring classification models over dynamic distributed data streams. One of the future directions is to extend the proposed framework to
+ensembles of linear classifiers and neural networks, including deep learning networks.
+

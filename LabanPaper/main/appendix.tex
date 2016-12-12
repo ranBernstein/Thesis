@@ -1,0 +1,287 @@
+\chapter{Appendix}
+\label{appendix:Appendix}
+
+\section{Appendix 1: proof of the convex bound in Lemma 2}
+\label{sec:appendix1}
+We must find a convex subset $\mathcal{C}$ satisfying the condition of Eq. \ref{convex}. Let
+us start by recalling the definition of the operator norm of a matrix:
+\begin{definition}
+Let $A$ be a matrix. Its operator norm or
+spectral norm (hereafter just norm), is defined as:
+\begin{equation}
+\Big \| A \Big \| = \sup_{x \neq 0}\frac{||Ax||}{||x||}.
+\end{equation}
+\end{definition}
+The following result is very useful in the forthcoming analysis:
+\begin{lemma} \label{lemma:newman}
+If $A$ is square and $\Big \| A \Big \| < 1$, then
+\begin{equation*}
+\Big \| (I+A)^{-1} \Big \| < \frac{1}{1- \Big \|A \Big \|}.
+\end{equation*}
+\end{lemma}
+The proof for this lemma can be found in \cite{gabel2015monitoring}.
+
+\subsection{Convex Bound Proof}
+We recall that $\mathcal{C}$ is the convex subset that satisfies
+inequality \ref{convex}, and $\mathcal{G}$ is the set of triplets
+$(\Delta_s^i, \delta_p^i, \delta_q^i)$
+which satisfy the inequality \ref{eq:convexBound}.
+
+\begin{lemma} \label{GinC}
+%$\mathcal{G} \subseteq \mathcal{C}$:
+\begin{equation}
+\begin{split}
+(||B_0^{-1}\delta|| + (||w_0||+R_0)(\Big \|B_0^{-1}L\Big \|+\Big \|B_0^{-1}M\Big \|) \\
+ \leq R_0) \Rightarrow (||w-w_0|| \leq R_0).
+\end{split}
+\end{equation}
+\end{lemma}
+
+\begin{proof}
+We can write the sphere inclusion condition \ref{eq:critiria} in terms of $B_0, \Delta, u_0$ and $\delta$, by using the triangle inequality:
+\begin{equation} \label{in}
+\begin{split}
+||w-w_0|| & = \ ||(B_0+\Delta)^{-1}(u_0+\delta) - B_0^{-1}u_0|| \\
+& < ||(B_0+\Delta)^{-1}\delta|| \\
+& \ \ + ||((B_0+\Delta)^{-1} - B_0^{-1})u_0||.
+\end{split}
+\end{equation}
+
+We split the right side of the last inequality into two parts:
+\begin{equation}  \label{e1e2}
+\begin{split}
+& E_1:= ||(B_0+\Delta)^{-1}\delta|| \\
+& E_2:= ||((B_0+\Delta)^{-1} - B_0^{-1})u_0||.
+\end{split}
+\end{equation}
+Under the assumption  $||B_0^{-1}\Delta||\ \leq \ 1$,
+it follows from lemma \ref{lemma:newman}:
+\begin{equation} \label{e1e2In}
+\begin{split}
+& E_1 \leq \frac{||B_0^{-1}\delta||}{1-\Big \|B_0^{-1}\Delta\Big \|} \\
+& E_2 \leq  \frac{|| B_0^{-1}\Delta w_0||}{1-\Big \|B_0^{-1}\Delta\Big \|}.
+\end{split}
+\end{equation}
+From standard properties of the norm we get:
+\begin{equation} \label{CS}
+||B_0^{-1}\Delta w_0||  \leq  \Big \|B_0^{-1}\Delta \Big \| ||w_0||.
+\end{equation}
+Substituting Eq. \ref{e1e2}, \ref{e1e2In} and \ref{CS} in Eq. \ref{in}, we
+get:
+\begin{equation}
+\begin{split}
+|| w-w_0 \parallel & \leq \ E_1+E_2 \\
+& \leq \frac{||B_0^{-1}\delta|| + \Big \|B_0^{-1}\Delta\Big \|||w_0||}{1 -\Big \|B_0^{-1}\Delta \Big \|} \\
+& \leq R_0.
+\end{split}
+\end{equation}
+After rearranging the terms, we have
+\begin{equation} \label{lostDenom}
+||B_0^{-1}\delta|| + \Big \|B_0^{-1}\Delta \Big \| ||w_0||
+\leq R_0(1 -\Big \|B_0^{-1}\Delta\Big \|).
+\end{equation}
+From the triangle inequality we can rewrite:
+\begin{equation} \label{linQuad}
+\Big \|B_0^{-1}\Delta\Big \| \leq \Big \|B_0^{-1}L\Big \|+\Big \|B_0^{-1}M\Big \|.
+\end{equation}
+And finally, combining inequalities \ref{lostDenom} and \ref{linQuad},
+we get the following bound:
+\begin{alignat*}{2} \label{convexBound}
+&||B_0^{-1}\delta|| &+ (||w_0||+R_0)(\Big \|B_0^{-1}L\Big \|+\Big \|B_0^{-1}M\Big \|)  \leq R_0. \\
+&
+\end{alignat*}
+\end{proof}
+
+\begin{lemma} \label{GisConvex}
+$||B_0^{-1}\delta|| + (||w_0||+R_0)(\Big \|B_0^{-1}L\Big \|+\Big \|B_0^{-1}M\Big \|$ is convex in $(\Delta_s,\delta_p, \delta_q).$
+%$||B_0^{-1}\delta||$ is convex in $\delta$.
+\end{lemma}
+\begin{proof}
+Multiplication by $B_0^{-1}$ is a linear operation, and norm is a convex
+operation. Therefore $||B_0^{-1}\delta||$ is convex in $\delta$.
+%\end{proof}
+
+We recall that:
+\begin{equation*}
+L:= \Delta_S - p_0\delta_p^T - \delta_pp_0^T - q_0\delta_q^T - \delta_qq_0^T.
+\end{equation*}
+%\begin{lemma} \label{L}
+%$||B_0^{-1}L||$ is convex in $\Delta_s, \delta_p$
+%and $\delta_q$.
+%\end{lemma}
+%\begin{proof}
+$L$ is linear in $(\Delta_s, \delta_p)$ and therefore $\Big \|B_0^{-1}L\Big \|$ is convex in these variables.
+
+%\end{proof}
+
+We recall that:
+\begin{equation*}
+M:= - \delta_p\delta_p^T - \delta_q\delta_q^T.
+\end{equation*}
+
+%\begin{lemma} \label{M}
+It is left to prove that $\Big \|B_0^{-1}M\Big \|$ is convex in $(\delta_p, \delta_q)$.
+%\end{lemma}
+%\begin{proof}
+\\From the definition of the operator norm, we can rewrite:
+\begin{alignat*} {2}
+\Big \|M \Big \| & = && ||B_0^{-1}(\max_{||u||=1}{\{u^T \delta_p\delta_p^T u\}} +
+\max_{||u||=1}{\{u^T \delta_q\delta_q^T u\}})||\\
+& = && ||B_0^{-1}(\max_{||u||=1}{\{||u^T \delta_p||^2\}} +
+\max_{||u||=1}{\{||u^T \delta_q||^2\}})||.
+\end{alignat*}
+\\We observe that the maximum over any number (infinite in this case) of convex functions
+ is also a convex
+function, and since multiplication by a matrix and the norm
+operation preserve convexity, this concludes the proof.
+\end{proof}
+
+\begin{corollary}
+From Lemmas \ref{GinC} and \ref{averages}, we conclude that $\mathcal{G}\subseteq \mathcal{C}$. From Lemma \ref{GisConvex} we conclude that $\mathcal{G}$ is convex, and this completes the proof of Lemma \ref{lemma:convexBound}.
+\end{corollary}
+%
+%
+\section{Appendix 2: an analysis of the probabilistic version, PDLDA}
+%
+\label{sec:prob}
+As briefly discussed in Section \ref{sec:PDLDA}, the DLDA synchronization policy
+(a node alerts whenever its local vector exits the convex set $\mathcal{C}$) is
+strictly correct (i.e. every global violation will be caught; recall that a global
+violation occurs when the average vector exits $\mathcal{C}$). However, typically,
+even if a relatively large percentage of the local vectors are not in 
+$\mathcal{C}$, the average is still in $\mathcal{C}$, due to a "cancellation effect"
+which resembles the one manifest in the central limit theorem. While the
+treatment of general convex sets is difficult and left for future work,
+we discuss here the case in which $\mathcal{C}$ is a solid sphere; this can
+be directly applied to spherical safe zones, which have proven to be simple and
+effective \cite{keren2012shape}. 
+
+Assume then the following: given are $k$ nodes, with node $i$ 
+holding a vector $v_i$. If the safe zone is
+a solid sphere of radius $R$, assumed without loss of generality to
+be centered at the origin, the monitored global condition is 
+$\norm{\left(\displaystyle \sum_{i=1}^k v_i\right)/k} \leq R$, while
+a  node $i$ violates if $||v_i|| \leq R$. In order to continue the analysis,
+we must define some probabilistic model over $v_i$; we assume that the
+$v_i$ are independent Gaussian vectors, with zero mean and a covariance
+matrix equal to $\sigma I$ ($I$ is the $n \times n$ unit matrix, where
+$n$ is the dimension of the $v_i$'s). The
+following analysis, especially the "cancellation effect" when averaging
+the $v_i$'s, will hold for other distributions as well; we use the Gaussian
+one since it is the most common.
+
+Recall that all the local drift vectors are initially (i.e. after a 
+full synchronization) 
+equal to zero; hence, the local vectors $v_i$ are initially all zero, and 
+gradually their magnitude increases. We therefore assume that $\sigma$
+increases with time, and with it the magnitude of $||v_i||$. We next
+compute, for a given $\sigma$, the expectation and variance of both 
+$||v_i||^2$ and $\norm{\left(\displaystyle \sum_{i=1}^k v_i\right)/k}^2$,
+which will allow to estimate the probabilities of them crossing $R^2$
+(which is equivalent to local vs. global violation).
+%
+%
+\subsection{The distribution of the norm squared at a single node}
+\label{sec:vi2}%
+%
+In order to reduce equation clutter, we will assume that $\sigma=1$ (the
+general case follows immediately by scaling). The probability density 
+of every coordinate $x$ of $v_i$ (for all $i$) is that of the standard
+normal distribution, $\frac{1}{\sqrt{2\pi}}\exp{(-x^2/2)}$. The expectation
+of the square of every coordinate is of course just 1, hence the 
+expectation of the norm squared is the dimension $n$.
+
+To compute the variance of $||v_i||^2$, we need to first compute the
+expectation of its square, that is, $||v_i||^4$. Representing $v_i$'s
+coordinates by $x_1 \ldots x_n$, this requires
+computing the integral
+\begin{eqnarray*}
+& & \frac{1}{{(2\pi)}^{n/2}}\displaystyle\limits\int_{-\infty}^{\infty} \ldots \limits\int_{-\infty}^{\infty}(x^2_1 + \ldots x^2_n)^2 \exp{(-1/2)(x^2_1 + \ldots x^2_n)) \\
+& & dx_1 \ldots dx_n
+\end{eqnarray*}
+expanding the square yields both fourth powers $x_i^4$ and products of the form
+$x_i^2x_j^2$. Due to symmetry considerations, all corresponding integrals of the first
+type are equal, and similarly for the second. This rather straightforward leads
+to the result being equal to $n^2+2n$. The variance therefore equals 
+$(n^2+2n)-n^2=2n$.
+%
+%
+\subsection{The distribution of the norm squared of the average vector}
+%
+%
+This distribution is somewhat more complicated. We leave out the $k^2$ constant
+for the meanwhile (it will be factored in when the computation is done). Note
+that
+\begin{equation}
+\label{proof-2-1}
+\norm {\displaystyle \sum_{i=1}^k v_i}^2 = 
+\displaystyle \sum_{i=1}^k \norm{v_i}^2 +
+\displaystyle \sum_{i \neq j}^k } \langle v_i , v_j\rangle
+\end{equation}
+%
+
+The first summand is just the sum of norms squared, and it was treated in
+Section \ref{sec:vi2}. We turn to the second summand. Due to symmetry considerations,
+it suffices to compute the distribution of $\langle v_i , v_j\rangle$ for
+any choice of $i \neq j$, so we assume that $x,y$ are vectors drawn from the
+same distribution as the $v_i$'s (multivariate standard normal), and study
+the distribution of $\langle x,y\rangle$. Since 
+$\langle x,y\rangle = \displaystyle\sum_{i=1}^n x_iy_i$, and since all
+$x_i,y_i$ are zero mean and independent, the expectation of 
+$\langle x,y\rangle$ is also zero. To compute the variance, we need
+to evaluate the integral of $\langle x,y\rangle^2$; this standard Gaussian
+integral turns out to equal $n$. 
+
+Combining the results on the expectation and variance of the two summands
+($\sum_{i=1}^k \norm{v_i}^2$ and $\sum_{i \neq j}^k \langle v_i , v_j\rangle$),
+using independence and then dividing by $k^2$, yields the following (for a 
+general $\sigma$):
+
+\begin{lemma}
+\label{lemma:Gaussian}
+The expectation of the random variable $||v_i||^2$ is $n\sigma^2$, and its
+variance is $2n\sigma^4$. Recall that this random variable represents the
+data in a single node, and when it crosses $T^2$, a local violation occurs. 
+
+
+The expectation of the random variable
+\(\norm{\left(\displaystyle \sum_{i=1}^k v_i\right)/k}^2\) is
+$\frac{n\sigma^2}{k}$, and its variance is 
+$\frac{2n\sigma^4}{k^3} + \frac{n\sigma^4}{k^2} \approx \frac{n\sigma^4}{k^2}$.
+Recall that this random variable represents the
+global data, and when it crosses $T^2$, a global (i.e. {\emph real}) violation occurs. 
+\end{lemma}
+
+To summarize, the (not too surprising) result is that both the expectation and
+standard deviation of the global vector's norm squared are smaller by a factor of $k$ than those of the local vector's norm squared. Note that the distribution of the norm
+squared of the local vectors is strongly peaked (i.e. the standard deviation,
+$\sqrt{2n}\sigma^2$, is much smaller than the expectation, $n\sigma^2$). This means
+that, with a very good approximation, the local nodes start reporting violations
+when $n\sigma^2=T^2$, or $\sigma = T/\sqrt{n}$. But for this $\sigma$, the 
+expectation and standard deviation of the norm of the global vector squared
+are equal to $T^2/k$ and $T^2/k\sqrt{n}$. Since, from the central limit theorem,
+the distribution approximates a normal one, it is clear that -- since both its
+expectation and standard deviation are smaller than $T^2$ by a factor of at least
+$k$, then the probability that this variable crosses $T^2$ is extremely small (and
+it decreases when the number of nodes increases).
+
+Note that, in the above analysis for computing the expectation and variance
+of the norm squared of the local and global vectors, we did not strongly rely
+on the properties of the assumed normal distribution. Indeed, the same type
+of analysis could have been carried out by merely assuming any values of
+expectation and variance for the local vectors, and the results would be
+similar in nature, due to the "cancellation effect" manifest in averaging
+random variables. The additional factor that can affect the results is the
+level of independence between the vectors in different nodes. For fully
+independent vectors, the results will be as in the analysis above; in the
+adversarial scenario -- all local vectors are equal -- the average vector is just
+equal to the local ones, but then, the probabilistic version (PDLDA) will
+still be correct. The cases in-between -- i.e some degree of correlation
+among the nodes, 
+measure by the angles between the local vectors, -- can still be analyzed
+as above, and the percentage of nodes that must alert can be tuned to
+the strength of this correlation. Space limitation do not allow us to 
+pursue this analysis here.
+
+
+
